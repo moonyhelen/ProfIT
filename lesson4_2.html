@@ -1,0 +1,32 @@
+<script>
+	let X = prompt("Введите значние Х", "");
+	let Y = prompt("Введите значение У", "");
+	let znak = prompt("Введите символ из списка" + "\n+ - * / % ^ ", "");
+	let rez;
+
+	//Решение
+	switch (znak) {
+		case "+":
+			rez = (X + Y);
+			break;
+
+		case "-":
+			rez = (X - Y);
+			break;	
+
+		case "*":
+			rez = (X * Y);
+			break;
+		
+		case "/":
+			rez = (X / Y);
+			break;
+	};
+	if (rez) {
+		alert(X + znak + Y + " = " + rez );
+	}
+	else {
+		alert("Неизвестный символ операции");
+	}
+
+</script>

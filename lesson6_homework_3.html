@@ -1,0 +1,58 @@
+<htlm>
+	<head>
+		<script>
+//Последовательность
+	let massiv = [];
+	let vvod = +prompt("Введите 1, если хотите ввести последовательность вручную", "");
+
+	if (vvod == 1) {
+		let x = +prompt("Сколько чисел будет в последовательности?", "");
+		for (let i = 1; i <= x; i++) {
+			c = +prompt(`Введите ${i} число в последовательности`)
+			massiv.push(c);
+		}
+	} else {
+		massiv = [1, 5, 0, -23, 40, 8, 0, 0];
+	};
+
+//Количество элементов
+	let min = Math.min(...massiv);
+	let max = Math.max(...massiv);
+	let imin = massiv.indexOf(min);
+	let imax = massiv.indexOf(max);
+	console.log (min, max, imin, imax)
+
+	if (imin > imax) {
+		let t = imin;
+		imin = imax;
+		imax = t;
+	}
+
+	let dlina = imax - imin - 1;
+
+//Произведение
+	let m = dlina == 0 ? 0 : 1;
+
+	for (let i = imin + 1; i < imax; i++) {
+		m *= massiv[i];
+		console.log(m);
+	}
+
+
+//Вывод
+	alert(`Количество элементов расположенных между max и min = ${dlina} \nПроизведение этих чисел = ${m}`)
+
+
+		</script>
+	</head>
+	<body>
+		<h1>Урок 6. Домашнее задание.</h1>
+		<p> Вопрос 3.</p>
+		<p> В числовой последовательности определить количество 
+			и произведение элементов расположенных между максимальным 
+			и минимальным. Максимальный и минимальный элементы 
+			в расчёт количества и произведения не включать.
+		</p>
+			
+	</body>
+</html>

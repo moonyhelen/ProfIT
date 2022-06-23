@@ -1,0 +1,44 @@
+<htlm>
+	<head>
+		<script>
+//Ввод данных
+
+//Решение
+	let massiv = [1, 4, 9, 16, 25, 36, 49, 64, 81];
+	let k = +prompt();
+	let count = 0;
+	for (let Element of massiv) {
+		if (Element > k) {
+			Element = k;
+			count++;
+		}
+	}
+	console.log(massiv);
+	console.log(count);
+
+//2 вариант
+	let massiv = [1, 4, 9, 16, 25, 36, 49, 64, 81];
+	let k = +prompt();
+	let count = 0;
+	for (let i = 0; <massiv.length; i++) {
+		if (massiv[i] > k) {
+			massiv[i] = k;
+			count++;
+		}
+	}
+	console.log(massiv);
+	console.log(count);
+
+
+		</script>
+	</head>
+	<body>
+		<h1>Урок 6.</h1>
+		<p> Вопрос 1.</p>
+		<p> Вывести значения элементов массива с четными
+			порядковыми номерами, начиная с 0.
+			let massiv = [10,34,101,89,1002,5,103]
+		</p>
+			
+	</body>
+</html>

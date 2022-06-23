@@ -1,0 +1,13 @@
+<script>
+	//Ввод исходных данных
+	let R = Number(prompt("Введите значение внешнего радиуса основания" , ""));
+	let r = Number(prompt("Введите значение внутреннего радиуса основания" , ""));
+
+	//Решение
+	let h = R + r;
+	let V = Math.PI * (Math.pow(R,2) - Math.pow(r,2)) * h;
+	let S = (2 * Math.PI * (Math.pow(R,2) - Math.pow(r,2))) + 2 * Math.PI * Math.pow(h,2);
+
+	//Вывод результата
+	alert("Объем цилиндра = " + V + "\nПлощадь полной поверхности цилиндра =" + S);
+</script>

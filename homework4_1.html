@@ -1,0 +1,46 @@
+<htlm>
+	<head>
+		<script>
+//ввод данных
+let x1 = prompt("Введите координату Х точки А", "");
+let y1 = prompt("Введите координату Y точки А", "");
+let x2 = prompt("Введите координату Х точки B", "");
+let y2 = prompt("Введите координату Y точки B", "");
+let x3 = prompt("Введите координату Х точки C", "");
+let y3 = prompt("Введите координату Y точки C", "");
+
+//решение
+let OA = Math.sqrt( Math.pow(x1,2) + Math.pow(y1,2) );
+let Soa = Math.PI * Math.pow(OA,2);
+
+let OB = Math.sqrt( Math.pow(x2,2) + Math.pow(y2,2) );
+let Sob = Math.pow(OB,2);
+
+let AC = Math.sqrt(Math.pow((x1 - x3),2) + Math.pow((y1 - y3),2));
+let BC = Math.sqrt(Math.pow((x2 - x3),2) + Math.pow((y2 - y3),2));
+let Sabc = AC * BC;
+
+
+if (Soa > Sob && Soa > Sabc) {
+	alert("Больше площадь круга с радиусом OA" + "\nS круга ~ " + Math.round(Soa) + ", S квадрата ~ " + Math.round(Sob) + ", S прямоугольника ~ " + Math.round(Sabc))
+} else if (Sob > Soa && Sob > Sabc) {
+	alert("Больше площадь квадрата со стороной OB" + "\nS круга ~ " + Math.round(Soa) + ", S квадрата ~ " + Math.round(Sob) + ", S прямоугольника ~ " + Math.round(Sabc))
+} else if (Sabc > Soa && Sabc > Sob) {
+	alert("Больше площадь прямоугольника со сторонами радиусом AC и BC" + "\nS круга ~ " + Math.round(Soa) + ", S квадрата ~ " + Math.round(Sob) + ", S прямоугольника ~ " + Math.round(Sabc))
+} else if (Soa == Sob && Soa == Sabc) {
+	alert("Все площади фигур равны" + "\nS круга ~ " + Math.round(Soa) + ", S квадрата ~ " + Math.round(Sob) + ", S прямоугольника ~ " + Math.round(Sabc));
+} 
+
+		</script>
+	</head>
+	<body>
+		<h1>Домашнее задание 4</h1>
+		<p> Вопрос 1. </p>
+		<p> Даны точки A ( x1 , y1 ),
+			В ( х2 , у2 ), С ( х3 ,
+			у3 ). Выяснить, что больше: площадь круга с радиусом ОА,
+			площадь квадрата со стороной ОВ или площадь прямоугольника со сторонами АС
+			и ВС. </p>
+			
+	</body>
+</html>

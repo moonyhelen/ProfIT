@@ -1,0 +1,43 @@
+<htlm>
+	<head>
+		<script>
+//Ввод данных
+
+//Решение
+	let fruit = ["Яблоки", "Груша", "Апельсин", "Мандарин"];
+	let fruitsNew = fruits;
+	fruits
+	M.set ("txt", "text/plain");
+	M.set ("xm", "text/xml");
+	let text = prompt("Ввести расширение");
+	if (M.has(text)) {
+		alert("Тип файла - " + M.get(text));
+	} else {
+		alert ("Такого типа нет");
+	}
+
+
+//Второй вариант
+let massiv = new Map([
+         ["txt","text/plain"],
+         ["png","image/png"],
+         ["xml","text/xml"],
+         ["pdf","apllication/pdf"],
+         ["mp3","audio/mpeg"],
+         ["js","application/javascript"],
+       ]);
+       let input = prompt("Веедите расширение файла", "")
+       alert("Описание типа файла: " + massiv.get(input));
+
+		</script>
+	</head>
+	<body>
+		<h1>Урок 6.</h1>
+		<p> Вопрос 1.</p>
+		<p> Вывести значения элементов массива с четными
+			порядковыми номерами, начиная с 0.
+			let massiv = [10,34,101,89,1002,5,103]
+		</p>
+			
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<script>
+//ввод данных
+let x1 = prompt("Введите координату Х точки А", "");
+let y1 = prompt("Введите координату Y точки А", "");
+let x2 = prompt("Введите координату Х точки B", "");
+let y2 = prompt("Введите координату Y точки B", "");
+let x3 = prompt("Введите координату Х точки C", "");
+let y3 = prompt("Введите координату Y точки C", "");
+
+//решение
+let AB = Math.sqrt(Math.pow((x1 - x2),2) + Math.pow((y1 - y2),2));
+let Sab = Math.PI * Math.pow(AB,2);
+
+let BC = Math.sqrt(Math.pow((x2 - x3),2) + Math.pow((y2 - y3),2));
+let Sbc = Math.PI * Math.pow(BC,2);
+
+let AC = Math.sqrt(Math.pow((x1 - x3),2) + Math.pow((y1 - y3),2));
+let Sac = Math.PI * Math.pow(AC,2);
+
+let OB = Math.sqrt(Math.pow(x2,2) + Math.pow(y2,2));
+let OBd = OB / 2
+let Sob = Math.PI * Math.pow(OBd,2);
+
+if ((Sab > Sbc) && (Sab > Sac) && (Sab > Sob)) {
+	alert("Больше площадь круга с радиусом AB")
+} else if ((Sbc > Sab) && (Sbc > Sob) && (Sbc > Sac)) {
+	alert("Больше площадь круга с радиусом BC")
+} else if ((Sac > Sab) && (Sac > Sbc) && (Sac > Sob)) {
+	alert("Больше площадь круга с радиусом AC")
+} else if ((Sob > Sab) && (Sob > Sac) && (Sob > Sbc)) {
+	alert("Больше площадь круга с радиусом OB")
+} else if (Sbc == Sab == Sbc == Sob) {
+
+			alert("Все площади кругов равны");
+		
+} 
+
+</script>

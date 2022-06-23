@@ -1,0 +1,52 @@
+<htlm>
+	<head>
+		<script>
+//Ввод данных
+	N = +prompt("Введите значени N", "");
+	let T = [];
+	let T2 = [];
+	let Tt = [];
+	let E = [];
+	for (let str = 0; str < N; str++) {
+		T.push([]);
+		T2.push([]);
+		Tt.push([]);
+		E.push([]);
+		for (let stlb = 0; stlb < N; stlb++) {
+				T[str].push(stlb <= str ? 1 : 0);
+				T2[str].push(0);
+				Tt[str].push(stlb >= str ? 1 : 0);
+				E[str].push(stlb == str ? 1 : 0);
+		}
+	}
+
+//Решение
+
+	for (let str = 0; str < T.length; str++) {
+		for (let stlb = 0; stlb < T[str].length; stlb++) {
+			Tt[str][stlb] *= 3;
+			//console.log(Tt)
+			let s = 0;
+			let p = 1;
+			for (let i = 0; i < T.length; i++) {
+				s += T[str][i] * T[i][str];
+			}
+			T2[str][stlb] = s;
+			//console.log(T2)
+
+			T2[str][stlb] = T2[str][stlb] + Tt[str][stlb] + E[str][stlb];
+		}
+	}
+	console.log(T2)
+		</script>
+	</head>
+	<body>
+		<h1>Урок 6. Дополнительно домашнее задание.</h1>
+		<p> Вопрос 1.</p>
+		<p> Вычислить матрицу по заданному выражению
+			3*T ^T + E + T ^2, где T – треугольная квадратная матрица порядка N, 
+			E – единичная матрица порядка N, T ^T - транспонированная матрица T.
+		</p>
+			
+	</body>
+</html>

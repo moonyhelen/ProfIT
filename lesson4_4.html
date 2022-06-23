@@ -1,0 +1,13 @@
+<script>
+
+	// let stroka = "Использование регулярных выражений \
+	// интегрировано в методы строк ";
+	// alert(stroka.match(/и/gi));
+
+	let stroka = prompt("Введите целое число");
+	if (stroka.match(/\d/g)) {
+		alert(stroka.replace(/\D/g, ""))
+	} else {
+		alert("Введено не число!")
+	};
+</script>

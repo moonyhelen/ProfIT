@@ -1,0 +1,69 @@
+<htlm>
+	<head>
+		<script>
+//Последовательность
+	let massiv1 = [];
+	let massiv2 = [];
+	let vvod = +prompt("Введите 1, если хотите ввести последовательность вручную", "");
+	let J = +prompt("Сколько чисел будет в последовательности?", "");
+	let c;
+
+	if (vvod == 1) {
+		for (let i = 1; i <= J; i++) {
+			c = +prompt(`Введите ${i} число в последовательности`)
+			massiv1.push(c);
+		}
+
+	} else {
+		let min = -100;
+		let max = 100;
+		for (let i = 1; i <= J; i++) {
+			c = Math.floor(Math.random() * (max - min + 1)) + min; 
+			massiv1.push(c);
+		}
+	};
+	console.log(massiv1)
+
+//Положительные элементы
+	for (let i = 0; i < massiv1.length; i++){
+		if (massiv1[i] > 0) massiv2.push(massiv1[i]) 
+	}
+
+//Сортировка бинарными включениями
+	for (let i = 1; i < massiv2.length; i++){ 	//начинаем со второго элемента, тк первый считаем отсортированным
+		let k = massiv2[i];						//элемент, который берем для сортировки
+		let low = 0;
+		let high = i;						//правая граница отсортированного списка
+
+		while (low < high) {
+			let middle = Math.trunc(low + (high - low) / 2);
+			if (k > massiv2[middle]) {
+				high = middle;
+			} else {
+				low = middle + 1;
+			}
+		}
+
+		for (let unsort = i - 1; unsort >= high; unsort--) {
+			massiv2[unsort+1] = massiv2[unsort];
+		}
+		massiv2[high] = k;
+	}
+	
+
+//Вывод
+	alert(`Положительные числа массива в порядке убывания: ${massiv2}`)
+
+
+		</script>
+	</head>
+	<body>
+		<h1>Урок 6. Домашнее задание.</h1>
+		<p> Вопрос 4.</p>
+		<p> Задан числовой массив, состоящий из J элементов. 
+			Напечатать положительные числа в порядке убывания, 
+			используя метод сортировки бинарными включениями.
+		</p>
+			
+	</body>
+</html>
