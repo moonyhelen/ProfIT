@@ -1,0 +1,50 @@
+<htlm>
+	<head>
+		<script>
+		
+	let pass1 = `qwerty`;
+	let sys = 16;
+		
+		function h(str,sys) {
+			let s = 0;
+			for (let i = 0; i < str.length; i++) {
+				s += str.charCodeAt(i);
+			}
+			return (s % 256).toString(sys);
+		}
+		let hash1 = h(pass1,sys);
+
+		function hackpass() {
+			let abc = `1234567890qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM`;
+			for (let i = 0; i < abc.length; i++) {
+				for (let j = 0; j < abc.length; j++) {
+					let pass2 = abc[i] + abc[j];
+					let hash2 = h(pass2,sys);
+				
+					if (hash1 == hash2) {	
+						return pass2						
+					}
+				}
+					
+			}
+		}
+		alert (`пароль, имеющий такой же хэш - ${hackpass()}`)
+
+
+
+
+
+		
+		</script>
+	</head>
+	<body>
+		<h1>Урок 11. Домашнее задание.</h1>
+		<p> Вопрос 1.</p>
+		<p> Для хранения паролей используется хэш-функция: (charCode(C1) +charCode(C2) +..... +charCode(Cn) ) mod 256. </p> 
+		<p> Создайте скрипт, который будет содержать JavaScript-функцию, способную вычислять </p> 
+		<p> для произвольной строки символов значение этой хэш-функции в любой системе счисления </p> 
+		<p> в зависимости от передаваемого в функцию параметра   </p>    
+		
+
+	</body>
+</html>
