@@ -1,0 +1,56 @@
+<htlm>
+	<head>
+		<script>
+			
+
+	class Vector {
+		constructor (x, y, z) {
+			this.x = x;
+			this.y = y;
+			this.z = z;
+		}
+		calcLength() {
+			return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2) + Math.pow(this.z, 2));
+		}
+		static plus(a, b) {
+			let rx = a.x + b.x;
+			let ry = a.y + b.y;
+			let rz = a.z + b.z;
+			return `{${rx}; ${ry}; ${rz}}`;
+		}
+		static scalar(a, b) {
+			return (a.x * b.x + a.y * b.y + a.z * b.z)
+		}
+		get getLength() {
+			return this.calcLength();
+		}
+		toString() {
+			return `Вектор {X: ${this.x}; Y: ${this.y}; Z: ${this.z}} \n Длина = ${this.getLength}`
+		}
+	}
+
+	let a = new Vector (1, 2, 3);
+	let b = new Vector (10, 20, 30);
+
+	console.log(Vector.plus(a,b));
+	console.log(Vector.scalar(a,b));
+	console.log(a.toString());
+	console.log(b.toString());
+
+
+
+		
+		</script>
+	</head>
+	<body>
+	<p>Создайте класс Vector для представления вектора в</p>
+	<p>трехмерном пространстве (свойства для координат x, y, z).</p>
+	<p>Добавьте в прототип Vector для метода plus() и scalar() для</p>
+	<p>вычисления суммы двух векторов и скалярного произведения</p>
+	<p>двух векторов. Добавьте в прототип свойство только для </p>
+	<p>чтения length, подсчитывающее длину вектора.</p>
+	<p>Переопределите в классе vector методы toString() и valueOf().</p>
+	<p>Протестируйте созданный класс.</p>
+
+	</body>
+</html>

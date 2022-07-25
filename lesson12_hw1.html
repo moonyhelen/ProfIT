@@ -1,0 +1,92 @@
+<htlm>
+	<head>
+		<script>
+
+			class LRU {
+				cache = [];
+				maxLength = 3;
+				time = 1;
+
+				getCache(number) {
+					for (let i = 0; i < this.cache.length; i++) {
+						if (this.cache[i].key === number) {
+							this.time++;
+							this.cache[i].time = this.time;
+							return this.cache[i].value;
+						}
+					} 
+					return undefined;
+				}
+
+
+				addCache(number,sum) {
+					this.time ++;
+					let cachedValue = {
+						time: this.time,
+						key: number,
+						value: sum
+					}
+					if (this.cache.length > this.maxLength) {
+						let minTime = this.cache[0].time;
+						let minTimeIndex = 0;
+						for (let i = 0; i < this.cache.length; i++) {
+							if (minTime > this.cache[i].time) {
+								minTime = this.cache[i].time;
+								minTimeIndex = i;
+							}
+						} 
+						this.cache[minTimeIndex] = cachedValue;
+						console.log("Удалили старый элемент");
+
+					} else {
+						this.cache.push(cachedValue);
+					}
+				}
+			}
+
+			class Cache {
+				calculateSum(number) {
+					let sum = 0;
+					for (let i = 0; i < number; i++) {
+						sum += i;
+					}
+					return sum;
+				}
+				
+				cache = new LRU();
+				
+				cachedCalculateSum(number) {
+					if (this.cache.getCache(number) !== undefined) {
+						console.log("Значение из кэша");
+						return this.cache.getCache(number)
+					} else {
+						let sum = this.calculateSum(number);
+						this.cache.addCache(number,sum);
+						console.log("Добавляем в кэш");
+						return sum;
+					}
+				}
+			}
+
+			let ex = new Cache();
+			ex.cachedCalculateSum(3);
+			ex.cachedCalculateSum(5);
+			ex.cachedCalculateSum(3);
+			ex.cachedCalculateSum(7);
+			ex.cachedCalculateSum(9);
+			ex.cachedCalculateSum(11);
+			ex.cachedCalculateSum(13);
+	
+		
+		
+		</script>
+	</head>
+	<body>
+		<h1>Урок 12. Домашнее задание.</h1>
+		<p> Вопрос 1.</p>
+		<p>Создайте класс для реализации кэширования результатов вычисления функции calculateSum,</p>  
+		<p>код которой приведен в материалах к занятию в файле cache.js. В качестве алгоритма кэширования выберите LRU. </p>
+		<p>Для реализации кэша используйте класс Array. </p>
+
+	</body>
+</html>

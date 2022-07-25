@@ -1,0 +1,65 @@
+<htlm>
+	<head>
+		<script>
+
+//Ввод данных
+
+	let x = +prompt("Введите номер первой вершины (от 1 до 5)", "");
+	let y = +prompt("Введите номер второй вершины (от 1 до 5)", "");
+
+	if (x > 5 || y > 5 || x <= 0 || y <= 0 || isNaN(x) || isNaN(y) ) {
+		alert("Некорректные значения");
+	} else if (x == y) {
+		alert("Это одна и та же вершина, ребер нет");
+	} else {
+	
+	let graph = {
+		1: {
+			connections: [2, 5]
+		},
+		2: {
+			connections: [1, 3]
+		},
+		3: {
+			connections: [2]
+		},
+		4: {
+			connections: []
+		},
+		5: {
+			connections: [1]
+		}
+	};
+
+	function findPathLength (x, y, deep) {
+
+		if (graph[x].connections.indexOf(y) != -1) {
+			return deep + 1;
+		} else {
+			for (let child of graph[x].connections) {
+				let pathLength = findPathLength(child, y, deep+1)
+				if (pathLength != -1) {
+					return pathLength
+				}
+			}
+		}
+		return -1;
+	}
+
+	alert(`Количество граней между вершинами ${x} и ${y} равен ${findPathLength(x,y,0)}`)
+}
+
+		
+		</script>
+	</head>
+	<body>
+		<h1>Домашнее задание 9</h1>
+		<p> Вопрос 2.</p>
+		<p> В неориентированном графе требуется найти минимальный путь между двумя</p>
+		<p> вершинами. Ввод номеров вершин осуществить с клавиатуры. В качестве результата</p>
+		<p> вывести сначала L – длину кратчайшего пути (количество ребер, которые</p>
+		<p> нужно пройти), а затем сам путь. Если пути нет, нужно вывести -1.    </p>
+		
+			
+	</body>
+</html>

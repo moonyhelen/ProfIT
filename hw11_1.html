@@ -1,0 +1,27 @@
+<htlm>
+	<head>
+		<script>
+		
+		const text = 'Мне нравится язык JavaScript!';
+		async function digestMessage(message) {
+			const msgUint8 = new TextEncoder().encode(message);
+			const hashBuffer = await crypto.subtle.digest('SHA-256', msgUint8);
+			const hashArray = Array.from(new Uint8Array(hashBuffer));
+			const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+			return hashHex;
+		}
+	
+	digestMessage(text).then(digestHex=> console.log(digestHex));
+		
+		</script>
+	</head>
+	<body>
+		<h1>Урок 10. Домашнее задание.</h1>
+		<p> Вопрос 2.</p>
+		<p> Создайте класс "банковский счёт", который имеет следующие атрибуты: номер; </p>
+		<p>вкладчик; денежная сумма; годовой процент. Добавьте методы осуществляющие следующие операции: </p>
+		<p>внести средства; начислить проценты. Создайте массив элементов класса "банковский счёт"    </p>    
+		
+
+	</body>
+</html>

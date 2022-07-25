@@ -1,0 +1,41 @@
+<htlm>
+	<head>
+		<script>
+		while (true) {
+			let result = prompt("Введите число");
+			if (result == null) {
+				break;
+			}
+			else if (result != ` `) {
+				if (cache[result] != null) {
+					consile.log(cache[result])
+				} else {
+					cache[result] = calculateSum(+result)
+					console.log(cache[result])
+				}
+			}
+		}
+
+		
+		let cache = {}
+
+		function calculateSum(number) {
+			let sum = 0;
+			for (let i = 1; i < number; i++) {
+				sum += i;
+			}
+			return sum
+		}
+		
+		</script>
+	</head>
+	<body>
+		<h1>Урок 10. Домашнее задание.</h1>
+		<p> Вопрос 2.</p>
+		<p> Создайте класс "банковский счёт", который имеет следующие атрибуты: номер; </p>
+		<p>вкладчик; денежная сумма; годовой процент. Добавьте методы осуществляющие следующие операции: </p>
+		<p>внести средства; начислить проценты. Создайте массив элементов класса "банковский счёт"    </p>    
+		
+
+	</body>
+</html>

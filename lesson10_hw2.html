@@ -1,0 +1,45 @@
+<htlm>
+	<head>
+		<script>
+			
+		class Account {
+			constructor(number, investor, sum, percent) {
+				this.number = number;
+				this.investor = investor;
+				this.sum = sum;
+				this.percent = percent;
+			}
+			addMoney(add) {
+				this.sum += add;
+			}
+			addPercent() {
+				this.sum += this.sum * this.percent;
+			}
+		}
+
+		let arr = [
+			new Account(1, "Андрей", 16000, 8),
+			new Account(2, "Екатерина", 100000, 6),
+			new Account(3, "Дмитрий Федорович", 1000, 25),
+			new Account(4, "Анна", 24000, 5),
+		];
+
+		arr.map(account => {
+
+			//account.addPercent();
+			console.log(`Счет клиента №${account.number} ${account.investor}  = ${account.sum} . Процентная ставка ${account.percent}%`)
+		})
+
+		
+		</script>
+	</head>
+	<body>
+		<h1>Урок 10. Домашнее задание.</h1>
+		<p> Вопрос 2.</p>
+		<p> Создайте класс "банковский счёт", который имеет следующие атрибуты: номер; </p>
+		<p>вкладчик; денежная сумма; годовой процент. Добавьте методы осуществляющие следующие операции: </p>
+		<p>внести средства; начислить проценты. Создайте массив элементов класса "банковский счёт"    </p>    
+		
+
+	</body>
+</html>

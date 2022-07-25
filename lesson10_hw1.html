@@ -1,0 +1,34 @@
+<htlm>
+	<head>
+		<script>
+			
+		class Worker {
+			constructor(name, surname, rate, days) {
+				this.name = name;
+				this.surname = surname;
+				this.rate = rate;
+				this.days = days;
+			}
+			getSalary() {
+				return this.rate * this.days;
+			}
+		}
+
+		let andrew = new Worker ("Андрей", "Давыдов", 800, 20);
+		console.log(`Зарплата сотрудника ${andrew.name} ${andrew.surname} = ${andrew.getSalary()}`)
+
+
+		
+		</script>
+	</head>
+	<body>
+		<h1>Урок 10. Домашнее задание.</h1>
+		<p> Вопрос 1.</p>
+		<p> Реализуйте класс Worker (Работник), который будет иметь следующие свойства: </p>
+		<p>name (имя), surname (фамилия), rate (ставка за день работы), days (количество отработанных дней). </p>
+		<p>Также класс должен иметь метод getSalary(), который будет выводить зарплату работника. </p>
+		<p>Зарплата - это произведение (умножение) ставки rate на количество отработанных дней days.</p>    
+		
+
+	</body>
+</html>

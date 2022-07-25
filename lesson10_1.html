@@ -1,0 +1,27 @@
+<htlm>
+	<head>
+		<script>
+
+	function NewObject(nameObject) {
+		this.property1 = nameObject;
+		this.property2 = "значение";
+		this.property3 = 15;
+		this.property4 = true;
+		this.methodNew = function () {
+			console.log(`Создан объект ${this.property1}`);
+		}
+	}
+	let name = prompt();
+	let object1 = new NewObject(name);
+	console.log(object1.property1);
+	console.log(object1.property3);
+	console.table(object1);
+	object1.methodNew();
+
+		
+		</script>
+	</head>
+	<body>
+
+	</body>
+</html>

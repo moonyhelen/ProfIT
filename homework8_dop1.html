@@ -1,0 +1,47 @@
+<htlm>
+	<head>
+		<script>
+
+//Ввод данных
+
+	let N = +prompt("Введите число N", "");
+	let S = +prompt("Сколько число S", "");
+
+	if (isNaN(N) || isNaN(S)) {
+		alert("Значения должны быть числами");
+	} else if (N < 0 || S < 0) {
+		alert("Значения должны быть неотрицательными");
+	}
+
+	function equal (N, S) {
+		let Nstr = String(N);
+		let first = Nstr[0];
+		if (first == undefined) {
+			return 0;
+		}
+		console.log(N) 
+		return +first + equal(Nsrt.slice(1))
+
+	}
+
+			
+
+
+
+console.log(equal(N)) 
+	
+
+		
+		</script>
+	</head>
+	<body>
+		<h1>Дополнительное задание 8</h1>
+		<p> Вопрос 1.</p>
+		<p> Описать рекурсивную функцию equal(N, S) (где N и S – неотрицательные целые числа), 
+			которая проверяет, совпадает ли сумма цифр в десятичной записи числа N со значением S.
+
+			Например: equal(12345,15) = true, equal(24,7) = false, equal(100,1) = true.</p>
+		
+			
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<htlm>
+	<head>
+		<script>
+
+//Ввод данных
+	let X1 = [];
+	let X2 = [];
+	let M = +prompt("Введите количество строк в массиве", "");
+	let N = +prompt("Сколько количество столбцов в массиве", "");
+
+	if (isNaN(M) || isNaN(N)) {
+		alert("Значения должны быть числами");
+	} else if (M == 0 || N == 0) {
+		alert("Значения должны быть больше нуля");
+
+	} else {
+
+		for (let str = 0; str < M; str++) {
+			X1.push([]);
+			for (let stlb = 0; stlb < N; stlb++) {
+				let min = -10;
+				let max = 10;
+
+				X1[str].push(Math.floor(Math.random() * (max - min + 1)) + min)
+			}
+		}
+
+	//Получение матрицы X2
+		console.log(X1)
+		for (let str = 0; str < M; str++) {
+			X2.push([]);
+			for (let stlb = 0; stlb < N; stlb++) {
+				X2[str].push(X1[str][stlb]);
+					if (X1[str][stlb] == 3) {
+						X2[str][stlb] = -2;
+					} else if (X1[str][stlb] == -2) {
+						X2[str][stlb] = 1;
+					} else if (Math.abs(X1[str][stlb]) > 4) {
+						X2[str][stlb] = 0;
+					}
+			}
+		}
+		console.log(X2)
+
+	//Получение сумм элементов в столбцах
+		let stlbsum = [];
+		for (let stlb = 0; stlb < N; stlb++) {
+			let s = 0;
+			for (let str = 0; str < M; str++) {
+				s += X2[str][stlb];
+			}
+			stlbsum.push(s);
+		}
+		console.log(stlbsum);
+
+	//Получение матрицы Y
+		let Y = [];
+		for (let str = 0; str < M; str++) {
+			Y.push([]);
+			for (let stlb = 0; stlb < N; stlb++) {
+				Y[str].push(X1[str][stlb] + stlbsum[stlb]);
+			}
+		}
+		console.log(Y)
+
+	//Получение матрицы YY (Сортировка пузырьком)
+		let Yflat = Y.flat();
+		for (let pr = 0; pr < Yflat.length; pr++) {
+			for (el = 0; el < Yflat.length - pr - 1; el++) {
+				if (Yflat[el] > Yflat[el + 1]) {
+					let value = Yflat[el];
+					Yflat[el] = Yflat[el + 1];
+					Yflat[el + 1] = value;
+				}
+			}
+		}
+		console.log(Yflat);
+		
+		let YY = [];
+		for (let str = 0; str < M; str++) {
+			YY.push([]);
+			for (let stlb = 0; stlb < N; stlb++) {
+				YY[str].push(Yflat[stlb + str * N])		//Умножение на N позволяет "прибавить" нужное кол-во к индексам элементов
+			}
+		}
+		console.log(YY);
+
+	//Вывод результата
+
+		function printMatrix (matrix, name) {
+			document.write(`Матрица ${name} <br>`);
+			for(let str = 0; str < matrix.length; str++){
+				for(let stlb = 0; stlb < matrix[str].length; stlb++){
+					document.write(matrix[str][stlb] + " ");
+				};
+				document.write("<br>");
+			};
+			document.write("<br>");
+		};
+		printMatrix(X1, `X1`);
+		printMatrix(X2, `X2`);
+		printMatrix(Y, `Y`);
+		printMatrix(YY, `YY`);
+
+		}
+		
+		</script>
+	</head>
+	<body>
+		<h1>Индивидуальная задача.</h1>
+		<p> Вариант 51.</p>
+		<p> "Дана числовая матрица X1(M,иN).</p>
+		<p>Составить матрицу Х2, переписывая элементы матрицы XI при следующих условиях:</p>
+		<p>	- если элемент матрицы XI равен +3, то заменить его в матрице Х2 на -2;</p>
+		<p>	- если элемент матрицы XI равен -2, то заменить его в матрице Х2 на +1;</p>
+		<p>	- если модуль элемента матрицы XI больше 4, то заменить его в матрице Х2 на 0.</p>
+		<p>Получить результирующую матрицу Y сложением каждого элемента каждой строки матрицы Xl </p>
+		<p>	с алгебраической суммой элементов соответствующего столбца матрицы Х2.</p>
+		<p>	Расположить элементы матрицы Y в порядке возрастания (построчно слева направо), то есть получить матрицу YY.</p>
+		<p>Напечатать матрицы Y, YY."</p>
+		
+			
+	</body>
+</html>
