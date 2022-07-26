@@ -1,0 +1,226 @@
+<script>
+
+	class Racer {
+		//Создаем массив для сохранения времени на каждом этапе
+		times = [];
+
+		constructor(number, surname, name, rate) {
+			this.number = number;
+			this.surname = surname;
+			this.name = name;
+			this.rate = rate;
+		}
+
+		//Генерация времени прохождения этапа
+		addRandomTime() {
+			let min = 5; // Минимальное время прохождения этапа
+			let max = 10; // Максимальное время прохождения этапа
+
+			this.times.push(parseFloat((Math.random() * (max - min + 1) + min).toFixed(2)));
+		}
+	}
+
+	class Country {
+		//Количество баллов страны
+		score = 0;
+
+		constructor(name, racers) {
+			this.name = name;
+			this.racers = racers;
+		}
+
+		//Метод нахождения самого быстрого гонщика страны
+		findFastestRacer () {
+			let fastesRacer = this.racers[0];
+			for (let racer of this.racers) {
+				if (Math.min(racer.times) < Math.min(fastesRacer.times)) {
+					fastesRacer = racer;
+				}
+			}
+			return fastesRacer;
+		}
+	}
+
+	//Шаблон для вывода результатов
+	class ResultAlert {
+		showResult(countries) {
+			let resultsText = "Места стран   -   Лучший гонщик\n";
+
+			for (let i = 0; i < countries.length; i++) {
+				let fastestRacer = countries[i].findFastestRacer();
+				console.log(fastestRacer);
+				resultsText += `${i + 1}. ${countries[i].name}. - ${fastestRacer.name} ${fastestRacer.surname} (${Math.min(...fastestRacer.times)})\n`
+			}
+
+			alert(resultsText);
+		}
+	}
+
+	//Гонщики первой страны (Италия)
+	let spain = new Country("Испания", [
+		new Racer(1, `Контадор`, `Альберто`, 1),
+		new Racer(2, `Вальверде`, `Алехандро`, 7),
+		new Racer(3, `Родригес`, `Хоаким`, 12),
+		new Racer(4, `Санчес`, `Самуель`, 20)
+	]);
+
+	//Гонщики второй страны (Нидерланды)
+	let netherlands = new Country("Нидерланды", [
+		new Racer(5, `Дюмолен`, `Том`, 11),
+		new Racer(6, `ВанДерПул`, `Матье`, 16),
+		new Racer(7, `Пулс`, `Ваут`, 19),
+		new Racer(8, `Вос`, `Марианна`, 24)
+	]);
+				
+	//Гонщики третьей страны (Россия)
+	let russia = new Country("Россия", [
+		new Racer(9, `Меньшов`, `Денис`, 2),
+		new Racer(10, `Игнатьев`, `Михаил`, 3),
+		new Racer(11, `Закарин`, `Ильнур`, 4),
+		new Racer(12, `Войнова`, `Анастасия`, 10)
+	]); 
+
+	//Гонщики четвертой страны (Великобритания)
+	let greatBritain = new Country("Великобритания", [
+		new Racer(13, `Фрум`, `Кристофер`, 5),
+		new Racer(14, `Кавендиш`, `Марк`, 6),
+		new Racer(15, `Уиггинс`, `Бредли`, 13),
+		new Racer(16, `Томас`, `Геррейнт`, 18)
+	]);
+
+	//Гонщики пятой страны (Бельгия)
+	let belgium = new Country("Бельгия", [
+		new Racer(17, `Жильбер`, `Филипп`, 15),
+		new Racer(18, `ВанАрт`, `Воут`, 23),
+		new Racer(19, `Боонен`, `Том`, 26),
+		new Racer(20, `Стюйвен`, `Яспер`, 32)
+	]);
+
+	//Гонщики шестой страны (США)
+	let usa = new Country("США", [
+		new Racer(21, `Лемонд`, `Грег`, 8),
+		new Racer(22, `Эббот`, `Мара`, 27),
+		new Racer(23, `Неббен`, `Эмбер`, 28),
+		new Racer(24, `Фаррар`, `Тайлер`, 31)
+	]);
+
+	//Гонщики седьмой страны (Франция)
+	let france = new Country("Франция", [
+		new Racer(25, `Алафилипп`, `Жюлиан`, 17),
+		new Racer(26, `Пино`, `Тибо`, 21),
+		new Racer(27, `Роллан`, `Пьер`, 29),
+		new Racer(28, `Фоклер`, `Томас`, 30)
+	]);
+
+	//Гонщики восьмой страны (Италия)
+	let italy = new Country("Италия", [
+		new Racer(29, `Нибали`, `Винченцо`, 9),
+		new Racer(30, `Бассо`, `Иван`, 14),
+		new Racer(31, `Петакки`, `Алессандро`, 22),
+		new Racer(32, `Кунего`, `Дамиано`, 25)
+	]);
+
+	let countries = [
+		spain,
+		italy,
+		france,
+		usa,
+		belgium,
+		greatBritain,
+		netherlands,
+		russia
+	]
+
+	//Ввод количества этапов первого круга
+	let N = +prompt("Количество этапов первого круга", "");
+
+	if (isNaN(N) || N <= 0) {
+		alert("Недопустимое значение");
+	} else {
+
+		//Генерация времени прохождения этапа первого круга для каждого гонщика
+		for (let stage = 0; stage < N; stage++) {
+			for(let country of countries) {
+				for (let racer of country.racers) {
+					racer.addRandomTime();
+				}
+			}
+
+			//Сотрировка стран 
+			countries.sort((a, b) => {
+				let aWorthTime = Math.max(...a.racers.map(racer => Math.max(...racer.times)));
+				let bWorthTime = Math.max(...b.racers.map(racer => Math.max(...racer.times)));
+				
+				if (aWorthTime === bWorthTime) {
+					let aBestTime = Math.min(...a.racers.map(racer => Math.min(...racer.times)));
+					let bBestTime = Math.min(...b.racers.map(racer => Math.min(...racer.times)));
+					return aBestTime - bBestTime;
+				}
+				return aWorthTime - bWorthTime;
+			});
+
+			//Выдача очков за этап
+			for (let i = 0; i < countries.length; i++) {
+				countries[i].score += i;
+			}
+		}
+
+		//Сортировка по количеству очков за все этапы круга
+		countries.sort((a, b) => a.score - b.score);
+
+		new ResultAlert().showResult(countries);
+
+
+		// Второй круг
+		const needLaunchSecondLap = confirm("Стартовать второй круг?")
+
+		//Оставляем 4 лучших страны
+		if (needLaunchSecondLap) {
+			countries = countries.slice(0, 4);
+			
+			// Обнуляем данные о первом круге
+			for (let country of countries) {
+				country.score = 0;
+				for (let racer of country.racers) {
+					racer.times = [];
+				}
+			}
+
+				//Генерация времени прохождения этапа второго круга для каждого гонщика		
+				for(let country of countries) {
+					for (let racer of country.racers) {
+						racer.addRandomTime();
+					}
+				}
+
+				//Сортировка стран
+				countries.sort((a, b) => {
+					let aBestTime = Math.min(...a.racers.map(racer => Math.min(...racer.times)));
+					let bBestTime = Math.min(...b.racers.map(racer => Math.min(...racer.times)));
+					return aBestTime - bBestTime;
+				});
+
+				//Выдача очков за этап
+				for (let i = 0; i < countries.length; i++) {
+					countries[i].score += i;
+				}
+			}
+
+			//Финальная сортировка стран
+			countries.sort((a, b) => {
+				if (a.score === b.score) {
+					let aAvgRate = a.racers.map(racer => racer.rate).reduce((sum, rate) => sum + rate, 0) / a.racers.length;
+					let bAvgRate = b.racers.map(racer => racer.rate).reduce((sum, rate) => sum + rate, 0) / b.racers.length;
+					return aAvgRate - bAvgRate;
+				}
+				return a.score - b.score;
+			})
+
+			new ResultAlert().showResult(countries);
+
+			alert(`Страна - победитель: ${countries[0].name}`);
+		}
+
+
+
+</script>
